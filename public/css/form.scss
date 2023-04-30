@@ -1,0 +1,64 @@
+body {
+    h1 {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: #fff;
+        margin: 0;
+        font-size: 24px;
+    }
+    form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 75vw;
+        margin: 0 auto;
+        margin-top: 50px;
+
+        div {
+            margin: 10px;
+            flex: 1 0 100%;
+            display: flex;
+            flex-direction: column;
+
+            label {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+
+            span {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 5px;
+
+                input[type="text"],
+                input[type="tel"],
+                select {
+                    padding: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 5px;
+                    font-size: 16px;
+                }
+
+                select {
+                    margin-top: 5px;
+                }
+            }
+        }
+
+        .voir {
+            margin-left: 20px;
+            background-color: #333;
+            height: 4vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 30px;
+
+            a {
+                color: #fff;
+                text-align: center;
+            }
+        }
+    }
+}

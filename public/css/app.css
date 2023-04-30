@@ -1,0 +1,33 @@
+body .interface {
+  display: flex;
+}
+body .interface .title {
+  font-size: 28px;
+  margin: 0 auto;
+  margin-top: 50vh;
+  text-align: center;
+}
+body .interface h2 {
+  margin: 0 auto;
+  font-size: 18px;
+  text-align: center;
+  opacity: 0.7;
+  font-style: italic;
+  margin-top: 5px;
+}
+body .interface .menu {
+  background-color: rgba(0, 0, 0, 0.85);
+  height: 100vh;
+  width: 20vw;
+}
+body .interface .menu nav ul li {
+  margin-top: 85px;
+}
+body .interface .menu nav ul li a {
+  color: white;
+  margin-left: 25%;
+}
+body .interface .menu nav ul li a:hover {
+  color: #00b0ff;
+  transition: 0.5s ease;
+}/*# sourceMappingURL=app.css.map */

@@ -27,4 +27,9 @@ class Hebergement extends Model
     {
         return route('api.entreprise.show', $this);
     }
+
+    public function fans()
+    {
+        return $this->morphToMany(User::class, 'favorable', 'favoris');
+    }
 }

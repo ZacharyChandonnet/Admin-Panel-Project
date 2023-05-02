@@ -14,7 +14,13 @@ class ActiviteFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nom' => $this->faker->company(),
+            'type' => $this->faker->word(),
+            'description' => $this->faker->realText(),
+            'duree' => $this->faker->time(),
+            'prix' => $this->faker->word(),
+            'statut' => $this->faker->boolean(),
+            'nb_dispo' => $this->faker->word(),
         ];
     }
 }

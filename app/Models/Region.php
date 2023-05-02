@@ -27,4 +27,14 @@ class Region extends Model
     {
         return route('api.region.show', $this);
     }
+
+    public function fans()
+    {
+        return $this->morphToMany(User::class, 'favorable', 'favoris');
+    }
+
+    public function activites()
+    {
+        return $this->hasMany(Activite::class);
+    }
 }

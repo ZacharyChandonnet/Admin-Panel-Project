@@ -12,7 +12,7 @@ class UpdateRegionRequest extends StoreRegionRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

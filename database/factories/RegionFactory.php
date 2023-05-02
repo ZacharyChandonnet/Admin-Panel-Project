@@ -14,7 +14,9 @@ class RegionFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'nom' => $this->faker->company(),
+            'description' => $this->faker->realText(),
+            'specialite' => $this->faker->word(),
         ];
     }
 }

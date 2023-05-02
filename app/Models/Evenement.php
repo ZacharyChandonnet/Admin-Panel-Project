@@ -19,6 +19,11 @@ class Evenement extends Model
         'url_api',
     ];
 
+    public function fans()
+    {
+        return $this->morphToMany(User::class, 'favorable', 'favoris');
+    }
+
      public function getUrlAttribute()
     {
         return route('evenement.show', $this);

@@ -19,14 +19,19 @@ class Entreprise extends Model
         'url_api',
     ];
 
-    public function favorables()
-    {
-        return $this->morphedByMany(User::class, 'favorable', 'favoris');
-    }
+    // public function favorables()
+    // {
+    //     return $this->morphedByMany(User::class, 'favorable', 'favoris');
+    // }
 
     public function regionsList()
     {
         return $this->hasMany(Region::class)->select(['id', 'nom', 'region_id'])->orderBy('nom');
+    }
+
+    public function fans()
+    {
+        return $this->morphToMany(User::class, 'favorable', 'favoris');
     }
 
     public function getUrlAttribute()

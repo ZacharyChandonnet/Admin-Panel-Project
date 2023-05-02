@@ -9,6 +9,7 @@ use App\Http\Controllers\SecteurController;
 use App\Http\Controllers\ForfaitController;
 use App\Http\Controllers\CommentaiteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FavoriController;
 use App\Http\Controllers\EntrepriseForfaitController;
 use Database\Factories\EntrepriseFactory;
 use Illuminate\Support\Facades\Route;
@@ -155,6 +156,7 @@ Route::group([
     Route::post('', 'store')->name('user.store');
     Route::post('{user}', 'update')->name('user.update');
 });
+
 
 /*Route::group([
     'prefix' => 'user',

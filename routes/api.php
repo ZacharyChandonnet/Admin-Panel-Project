@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\SecteurController;
 use App\Http\Controllers\Api\ForfaitController;
 use App\Http\Controllers\Api\CommentaiteController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\FavoriController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -173,4 +174,15 @@ Route::group([
             Route::delete('{user}', 'destroy')->name('destroy');
         }
     );
+
+    Route::group([
+        'prefix' => '{type}/{id}',
+        'controller' => FavoriController::class,
+        'where' => [
+            'type' => 'entreprise|activite|hebergement|evenement|forfait|region',
+            'id' => '[0-9]+',
+        ],
+    ], function () {
+        Route::get('aimer', 'aimer')->name('favori.aimer');
+    });
 });

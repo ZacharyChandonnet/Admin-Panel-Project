@@ -12,7 +12,7 @@ class UpdateHebergementRequest extends StoreHebergementRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**

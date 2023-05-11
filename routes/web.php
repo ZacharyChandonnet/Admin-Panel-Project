@@ -29,7 +29,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-//echo Str::uuid();
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
 Route::group([
     'prefix' => 'entreprise',
@@ -158,16 +160,4 @@ Route::group([
 });
 
 
-/*Route::group([
-    'prefix' => 'user',
-    'controller' => EntrepriseForfaitController::class,
-    'where' => ['user' => '[0-9]+'],
-], function () {
-    Route::get('', 'index')->name('user.index');
-    Route::get('create', 'create')->name('user.create');
-    Route::get('{user}', 'edit')->name('user.edit');
-
-
-    Route::post('', 'store')->name('user.store');
-    Route::post('{user}', 'update')->name('user.update');
-});*/
+require __DIR__.'/auth.php';

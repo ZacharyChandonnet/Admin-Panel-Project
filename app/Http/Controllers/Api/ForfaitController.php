@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Forfait;
 use App\Http\Requests\StoreForfaitRequest;
 use App\Http\Requests\UpdateForfaitRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ForfaitController extends Controller
 {
@@ -16,7 +17,7 @@ class ForfaitController extends Controller
      */
     public function index()
     {
-        $forfait = Forfait::orderBy('id')->get(['id', 'nom', 'type', 'description', 'prix', 'date', 'dispo',]);
+        $forfait = Forfait::orderBy('id')->get(['id', 'nom', 'type', 'description', 'prix', 'date_debut', 'date_fin', 'emplacement', 'dispo',]);
         $forfait
             ->append(['url_api'])
             ->makeHidden(['created_at', 'updated_at']);
@@ -56,6 +57,7 @@ class ForfaitController extends Controller
      */
     public function show(Forfait $forfait)
     {
+        $forfait->append("est_aime");
         return $forfait;
     }
 
@@ -95,5 +97,22 @@ class ForfaitController extends Controller
     public function destroy(Forfait $forfait)
     {
         //
+    }
+
+    public function aimer(Forfait $forfait)
+    {
+        $user = Auth::user();
+        //$user = auth()->user();
+        //$user = User::find(1);  // temporaire
+        $etat = $forfait->fans()->toggle($user);
+        $etat = $etat["attached"];
+        $etat = count($etat);
+        $etat = $etat > 0;
+        $resultat = [
+            "action" => "aimer",
+            "id" => $forfait->id,
+            "etat" => $etat,
+        ];
+        return $resultat;
     }
 }

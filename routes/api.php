@@ -174,15 +174,106 @@ Route::group([
             Route::delete('{user}', 'destroy')->name('destroy');
         }
     );
+    
+    Route::group([
+        "prefix" => "entreprise",
+        "controller" => EntrepriseController::class,
+        "where" => ["entreprise" => "[0-9]+"],
+        "as" => "entreprise.",
+        // "middleware" => ["auth"],
+    ], function () {
+        Route::get("", "index")->name("index");
+        Route::post("", "store")->name("store");
+        Route::get("{entreprise}", "show")->name("show");
+        Route::put("{entreprise}", "update")->name("update");
+        Route::delete("{entreprise}", "destroy")->name("destroy");
+        Route::get("{entreprise}/aimer", "aimer")->name("aimer");
+    });
 
     Route::group([
-        'prefix' => '{type}/{id}',
-        'controller' => FavoriController::class,
-        'where' => [
-            'type' => 'entreprise|activite|hebergement|evenement|forfait|region',
-            'id' => '[0-9]+',
-        ],
+        "prefix" => "activite",
+        "controller" => ActiviteController::class,
+        "where" => ["activite" => "[0-9]+"],
+        "as" => "activite.",
+        // "middleware" => ["auth"],
     ], function () {
-        Route::get('aimer', 'aimer')->name('favori.aimer');
+        Route::get("", "index")->name("index");
+        Route::post("", "store")->name("store");
+        Route::get("{activite}", "show")->name("show");
+        Route::put("{activite}", "update")->name("update");
+        Route::delete("{activite}", "destroy")->name("destroy");
+        Route::get("{activite}/aimer", "aimer")->name("aimer");
     });
+
+    Route::group([
+        "prefix" => "hebergement",
+        "controller" => HebergementController::class,
+        "where" => ["hebergement" => "[0-9]+"],
+        "as" => "hebergement.",
+        // "middleware" => ["auth"],
+    ], function () {
+        Route::get("", "index")->name("index");
+        Route::post("", "store")->name("store");
+        Route::get("{hebergement}", "show")->name("show");
+        Route::put("{hebergement}", "update")->name("update");
+        Route::delete("{hebergement}", "destroy")->name("destroy");
+        Route::get("{hebergement}/aimer", "aimer")->name("aimer");
+    });
+
+    Route::group([
+        "prefix" => "region",
+        "controller" => RegionController::class,
+        "where" => ["region" => "[0-9]+"],
+        "as" => "region.",
+        // "middleware" => ["auth"],
+    ], function () {
+        Route::get("", "index")->name("index");
+        Route::post("", "store")->name("store");
+        Route::get("{region}", "show")->name("show");
+        Route::put("{region}", "update")->name("update");
+        Route::delete("{region}", "destroy")->name("destroy");
+        Route::get("{region}/aimer", "aimer")->name("aimer");
+    });
+
+    Route::group([
+        "prefix" => "forfait",
+        "controller" => ForfaitController::class,
+        "where" => ["forfait" => "[0-9]+"],
+        "as" => "forfait.",
+        // "middleware" => ["auth"],
+    ], function () {
+        Route::get("", "index")->name("index");
+        Route::post("", "store")->name("store");
+        Route::get("{forfait}", "show")->name("show");
+        Route::put("{forfait}", "update")->name("update");
+        Route::delete("{forfait}", "destroy")->name("destroy");
+        Route::get("{forfait}/aimer", "aimer")->name("aimer");
+    });
+
+    Route::group([
+        "prefix" => "evenement",
+        "controller" => EvenementController::class,
+        "where" => ["evenement" => "[0-9]+"],
+        "as" => "evenement.",
+        // "middleware" => ["auth"],
+    ], function () {
+        Route::get("", "index")->name("index");
+        Route::post("", "store")->name("store");
+        Route::get("{evenement}", "show")->name("show");
+        Route::put("{evenement}", "update")->name("update");
+        Route::delete("{evenement}", "destroy")->name("destroy");
+        Route::get("{evenement}/aimer", "aimer")->name("aimer");
+    });
+    
+
+    // Route::group([
+    //     'prefix' => '{type}/{id}',
+    //     'controller' => FavoriController::class,
+    //     'where' => [
+    //         'type' => 'entreprise|activite|hebergement|evenement|forfait|region',
+    //         'id' => '[0-9]+',
+    //     ],
+    // ], function () {
+    //     Route::get('aimer', 'aimer')->name('favori.aimer');
+    // });
 });

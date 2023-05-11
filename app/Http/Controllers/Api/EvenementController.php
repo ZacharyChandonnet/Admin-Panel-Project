@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Evenement;
 use App\Http\Requests\StoreEvenementRequest;
 use App\Http\Requests\UpdateEvenementRequest;
+use Illuminate\Support\Facades\Auth;
 
 class EvenementController extends Controller
 {
@@ -56,6 +57,7 @@ class EvenementController extends Controller
      */
     public function show(Evenement $evenement)
     {
+        $evenement->append("est_aime");
         return $evenement;
     }
 
@@ -95,5 +97,22 @@ class EvenementController extends Controller
     public function destroy(Evenement $evenement)
     {
         //
+    }
+
+    public function aimer(Evenement $evenement)
+    {
+        $user = Auth::user();
+        //$user = auth()->user();
+        //$user = User::find(1);  // temporaire
+        $etat = $evenement->fans()->toggle($user);
+        $etat = $etat["attached"];
+        $etat = count($etat);
+        $etat = $etat > 0;
+        $resultat = [
+            "action" => "aimer",
+            "id" => $evenement->id,
+            "etat" => $etat,
+        ];
+        return $resultat;
     }
 }

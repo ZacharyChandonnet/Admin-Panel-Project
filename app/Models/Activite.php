@@ -22,15 +22,29 @@ class Activite extends Model
 
     public function getUrlAttribute()
     {
-        return route('entreprise.show', $this);
+        return route('activite.show', $this);
     }
     public function getUrlApiAttribute()
     {
-        return route('api.entreprise.show', $this);
+        return route('api.activite.show', $this);
     }
 
     public function fans()
     {
         return $this->morphToMany(User::class, 'favorable', 'favoris');
+    }
+
+    public function getEstAimeAttribute()
+    {
+        if (auth()->guest()) {
+            return false;
+        }
+        // if (auth()->check()) {
+        //     return true;
+        // }
+        $user = auth()->user();
+        //$user = User::find(1);  // temporaire
+        return $this->fans()->where('user_id', $user->id)->count() > 0;
+        //return $this->fans()->count();
     }
 }

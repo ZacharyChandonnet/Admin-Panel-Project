@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Region;
 use App\Http\Requests\StoreRegionRequest;
 use App\Http\Requests\UpdateRegionRequest;
+use Illuminate\Support\Facades\Auth;
 
 class RegionController extends Controller
 {
@@ -56,6 +57,7 @@ class RegionController extends Controller
      */
     public function show(Region $region)
     {
+        $region->append("est_aime");
         return $region;
     }
 
@@ -95,5 +97,22 @@ class RegionController extends Controller
     public function destroy(Region $region)
     {
         //
+    }
+
+    public function aimer(Region $region)
+    {
+        $user = Auth::user();
+        //$user = auth()->user();
+        //$user = User::find(1);  // temporaire
+        $etat = $region->fans()->toggle($user);
+        $etat = $etat["attached"];
+        $etat = count($etat);
+        $etat = $etat > 0;
+        $resultat = [
+            "action" => "aimer",
+            "id" => $region->id,
+            "etat" => $etat,
+        ];
+        return $resultat;
     }
 }

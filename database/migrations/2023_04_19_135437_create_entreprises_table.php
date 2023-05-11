@@ -17,8 +17,12 @@ class CreateEntreprisesTable extends Migration
             $table->id();
             $table->integer('secteur_id')->nullable();
             $table->foreign('secteur_id')->references('id')->on('secteurs');
+            $table->integer('hebergement_id')->nullable();
+            $table->foreign('hebergement_id')->references('id')->on('hebergements');
             $table->string('nom', 50);
             $table->string('img_url')->nullable();
+            $table->string('logo_url')->nullable();
+            $table->string('site_web')->nullable();
             $table->string('type', 50);
             $table->string('description');
             $table->string('specialite');

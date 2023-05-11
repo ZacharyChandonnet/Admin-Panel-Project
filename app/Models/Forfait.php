@@ -9,7 +9,7 @@ class Forfait extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nom', 'type', 'description', 'prix', 'date', 'dispo',];
+    protected $fillable = ['nom', 'type', 'description', 'prix', 'date_debut', 'date_fin', 'dispo', 'emplacement'];
 
     protected $hidden = [
         'created_at',
@@ -27,10 +27,24 @@ class Forfait extends Model
 
     public function getUrlAttribute()
     {
-        return route('entreprise.show', $this);
+        return route('forfait.show', $this);
     }
     public function getUrlApiAttribute()
     {
-        return route('api.entreprise.show', $this);
+        return route('api.forfait.show', $this);
+    }
+
+    public function getEstAimeAttribute()
+    {
+        if (auth()->guest()) {
+            return false;
+        }
+        // if (auth()->check()) {
+        //     return true;
+        // }
+        $user = auth()->user();
+        //$user = User::find(1);  // temporaire
+        return $this->fans()->where('user_id', $user->id)->count() > 0;
+        //return $this->fans()->count();
     }
 }

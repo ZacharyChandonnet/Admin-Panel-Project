@@ -22,11 +22,11 @@ class Commentaite extends Model
 
     public function getUrlAttribute()
     {
-        return route('entreprise.show', $this);
+        return route('commentaite.show', $this);
     }
     public function getUrlApiAttribute()
     {
-        return route('api.entreprise.show', $this);
+        return route('api.commentaite.show', $this);
     }
 
     public function fans()

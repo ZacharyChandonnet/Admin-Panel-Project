@@ -11,7 +11,9 @@ class StoreForfaitRequest extends FormRequest
         'description' => ['required'],
         'type' => ['required'],
         'prix' => ['required'],
-        'date' => ['required'],
+        'emplacement' => ['required'],
+        'date_debut' => ['required'],
+        'date_fin' => ['required'],
         'dispo' => ['required'],
     ];
 

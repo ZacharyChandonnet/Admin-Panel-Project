@@ -32,4 +32,18 @@ class Evenement extends Model
     {
         return route('api.evenement.show', $this);
     }
+
+    public function getEstAimeAttribute()
+    {
+        if (auth()->guest()) {
+            return false;
+        }
+        // if (auth()->check()) {
+        //     return true;
+        // }
+        $user = auth()->user();
+        //$user = User::find(1);  // temporaire
+        return $this->fans()->where('user_id', $user->id)->count() > 0;
+        //return $this->fans()->count();
+    }
 }

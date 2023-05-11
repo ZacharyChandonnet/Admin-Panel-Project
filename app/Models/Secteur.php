@@ -22,11 +22,11 @@ class Secteur extends Model
 
     public function getUrlAttribute()
     {
-        return route('entreprise.show', $this);
+        return route('secteur.show', $this);
     }
     public function getUrlApiAttribute()
     {
-        return route('api.entreprise.show', $this);
+        return route('api.secteur.show', $this);
     }
 
     public function entreprises()

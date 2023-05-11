@@ -6,7 +6,7 @@
 </div>
 
 <div>
-    <label for="type">Type</label>
+    <label for="type">Ville</label>
     <span><input type="text" name="type" id="type" value="{{ $entreprise->type }}" ></span>
 </div>
 
@@ -51,6 +51,9 @@
         <select name="secteur_id" id="secteur_id">
             <option value="1" {{ $entreprise->secteur_id == 1 ? 'selected' : '' }}>Agriculture</option>
             <option value="2" {{ $entreprise->secteur_id == 2 ? 'selected' : '' }}>Agroalimentaire</option>
+            <option value="3" {{ $entreprise->secteur_id == 2 ? 'selected' : '' }}>Restauration</option>
+            <option value="4" {{ $entreprise->secteur_id == 2 ? 'selected' : '' }}>Activite</option>
+            <option value="5" {{ $entreprise->secteur_id == 2 ? 'selected' : '' }}>Hebergement</option>
         </select>
     </span>
 </div>

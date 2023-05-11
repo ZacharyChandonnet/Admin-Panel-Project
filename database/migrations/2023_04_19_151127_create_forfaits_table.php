@@ -20,8 +20,10 @@ class CreateForfaitsTable extends Migration
             $table->string('nom');
             $table->string('type');
             $table->string('description');
+            $table->string('emplacement');
             $table->float('prix');
-            $table->date('date');
+            $table->date('date_debut');
+            $table->date('date_fin');
             $table->boolean('dispo');
             $table->timestamps();
         });

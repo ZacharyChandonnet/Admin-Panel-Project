@@ -4,8 +4,11 @@
     <label for="categorie">Categorie</label>
     <span>
         <select name="categorie" id="categorie">
-            <option value="1" {{ $secteur->categorie == "Agriculture" ? 'selected' : '' }}>Agriculture</option>
-            <option value="2" {{ $secteur->categorie == "Agroalimentaire" ? 'selected' : '' }}>Agroalimentaire</option>
+            <option value="Agriculture" {{ $secteur->categorie == "Agriculture" ? 'selected' : '' }}>Agriculture</option>
+            <option value="Agroalimentaire" {{ $secteur->categorie == "Agroalimentaire" ? 'selected' : '' }}>Agroalimentaire</option>
+            <option value="Restauration" {{ $secteur->categorie == "Restauration" ? 'selected' : '' }}>Restauration</option>
+            <option value="Activite" {{ $secteur->categorie == "Activite" ? 'selected' : '' }}>Activite</option>
+            <option value="Hebergement" {{ $secteur->categorie == "Hebergement" ? 'selected' : '' }}>Hebergement</option>
         </select>
     </span>
 </div>
@@ -16,3 +19,4 @@
 </div>
 
 <div><button type="submit">Modifier</button></div>
+

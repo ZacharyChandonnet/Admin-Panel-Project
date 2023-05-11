@@ -6,6 +6,7 @@ use App\Models\Entreprise;
 use App\Http\Requests\StoreEntrepriseRequest;
 use App\Http\Requests\UpdateEntrepriseRequest;
 
+
 class EntrepriseController extends Controller
 {
     /**
@@ -42,7 +43,7 @@ class EntrepriseController extends Controller
         $data = $request->all();
         $entreprise->fill($data);
         $entreprise->save();
-        return redirect()->route('entreprise.edit',$entreprise);
+        return redirect()->route('entreprise.edit', $entreprise);
     }
 
     /**

@@ -10,7 +10,7 @@
 </div>
 
 <div>
-    <label for="date_fin">Date de début</label>
+    <label for="date_fin">Date de Fin</label>
     <span><input type="date" name="date_fin" id="date_fin" value="{{ $evenement->date_fin }}"></span>
 </div>
 

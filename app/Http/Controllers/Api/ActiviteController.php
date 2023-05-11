@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Activite;
 use App\Http\Requests\StoreActiviteRequest;
 use App\Http\Requests\UpdateActiviteRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ActiviteController extends Controller
 {
@@ -57,6 +58,7 @@ class ActiviteController extends Controller
      */
     public function show(Activite $activite)
     {
+        $activite->append("est_aime");
         return $activite;
     }
 
@@ -96,5 +98,22 @@ class ActiviteController extends Controller
     public function destroy(Activite $activite)
     {
         //
+    }
+
+    public function aimer(Activite $activite)
+    {
+        $user = Auth::user();
+        //$user = auth()->user();
+        //$user = User::find(1);  // temporaire
+        $etat = $activite->fans()->toggle($user);
+        $etat = $etat["attached"];
+        $etat = count($etat);
+        $etat = $etat > 0;
+        $resultat = [
+            "action" => "aimer",
+            "id" => $activite->id,
+            "etat" => $etat,
+        ];
+        return $resultat;
     }
 }

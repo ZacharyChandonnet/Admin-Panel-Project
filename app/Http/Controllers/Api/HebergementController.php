@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Hebergement;
 use App\Http\Requests\StoreHebergementRequest;
 use App\Http\Requests\UpdateHebergementRequest;
+use Illuminate\Support\Facades\Auth;
 
 class HebergementController extends Controller
 {
@@ -56,6 +57,7 @@ class HebergementController extends Controller
      */
     public function show(Hebergement $hebergement)
     {
+        $hebergement->append("est_aime");
         return $hebergement;
     }
 
@@ -95,5 +97,22 @@ class HebergementController extends Controller
     public function destroy(Hebergement $hebergement)
     {
         //
+    }
+
+    public function aimer(Hebergement $hebergement)
+    {
+        $user = Auth::user();
+        //$user = auth()->user();
+        //$user = User::find(1);  // temporaire
+        $etat = $hebergement->fans()->toggle($user);
+        $etat = $etat["attached"];
+        $etat = count($etat);
+        $etat = $etat > 0;
+        $resultat = [
+            "action" => "aimer",
+            "id" => $hebergement->id,
+            "etat" => $etat,
+        ];
+        return $resultat;
     }
 }

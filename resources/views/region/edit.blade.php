@@ -7,3 +7,9 @@
     @include('region.form')
     <div class="voir"><a href="{{ route('region.index') }}">Voir Régions</a></div>
 </form>
+
+<form class="del" action="{{ route('region.destroy', $region->id) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette activité ?')">
+    @csrf
+    @method('DELETE')
+    <button class="btn" type="submit">Supprimer région</button>
+</form>

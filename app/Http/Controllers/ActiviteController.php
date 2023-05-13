@@ -42,7 +42,7 @@ class ActiviteController extends Controller
         $data = $request->all();
         $activite->fill($data);
         $activite->save();
-        return redirect()->route('activite.edit',$activite);
+        return redirect()->route('activite.edit', $activite);
     }
 
     /**
@@ -90,6 +90,7 @@ class ActiviteController extends Controller
      */
     public function destroy(Activite $activite)
     {
-        //
+        $activite->delete();
+        return redirect()->route('activite.index');
     }
 }

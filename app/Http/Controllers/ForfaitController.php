@@ -90,6 +90,7 @@ class ForfaitController extends Controller
      */
     public function destroy(Forfait $forfait)
     {
-        //
+        $forfait->delete();
+        return redirect()->route('forfait.index');
     }
 }

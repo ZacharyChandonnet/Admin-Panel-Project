@@ -45,6 +45,8 @@ Route::group([
 
     Route::post('', 'store')->name('entreprise.store');
     Route::post('{entreprise}', 'update')->name('entreprise.update');
+
+    Route::delete('entreprise/{entreprise}', [EntrepriseController::class, 'destroy'])->name('entreprise.destroy');
 });
 
 Route::group([
@@ -59,6 +61,8 @@ Route::group([
 
     Route::post('', 'store')->name('region.store');
     Route::post('{region}', 'update')->name('region.update');
+
+    Route::delete('region/{region}', [RegionController::class, 'destroy'])->name('region.destroy');
 });
 
 Route::group([
@@ -73,6 +77,8 @@ Route::group([
 
     Route::post('', 'store')->name('hebergement.store');
     Route::post('{hebergement}', 'update')->name('hebergement.update');
+
+    Route::delete('hebergement/{hebergement}', [HebergementController::class, 'destroy'])->name('hebergement.destroy');
 });
 
 Route::group([
@@ -87,6 +93,8 @@ Route::group([
 
     Route::post('', 'store')->name('evenement.store');
     Route::post('{evenement}', 'update')->name('evenement.update');
+
+    Route::delete('evenement/{evenement}', [EvenementController::class, 'destroy'])->name('evenement.destroy');
 });
 
 Route::group([
@@ -101,6 +109,8 @@ Route::group([
 
     Route::post('', 'store')->name('activite.store');
     Route::post('{activite}', 'update')->name('activite.update');
+
+    Route::delete('activite/{activite}', [ActiviteController::class, 'destroy'])->name('activite.destroy');
 });
 
 Route::group([
@@ -115,6 +125,8 @@ Route::group([
 
     Route::post('', 'store')->name('secteur.store');
     Route::post('{secteur}', 'update')->name('secteur.update');
+
+    Route::delete('secteur/{secteur}', [SecteurController::class, 'destroy'])->name('secteur.destroy');
 });
 
 Route::group([
@@ -129,6 +141,8 @@ Route::group([
 
     Route::post('', 'store')->name('forfait.store');
     Route::post('{forfait}', 'update')->name('forfait.update');
+
+    Route::delete('forfait/{forfait}', [ForfaitController::class, 'destroy'])->name('forfait.destroy');
 });
 
 Route::group([
@@ -157,7 +171,9 @@ Route::group([
 
     Route::post('', 'store')->name('user.store');
     Route::post('{user}', 'update')->name('user.update');
+
+    Route::delete('user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
 });
 
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

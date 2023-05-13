@@ -90,6 +90,7 @@ class SecteurController extends Controller
      */
     public function destroy(Secteur $secteur)
     {
-        //
+        $secteur->delete();
+        return redirect()->route('secteur.index');
     }
 }

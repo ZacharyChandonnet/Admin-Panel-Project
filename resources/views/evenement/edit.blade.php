@@ -8,3 +8,9 @@
 
     <div class="voir"><a href="{{ route('evenement.index') }}">Voir Événements</a></div>
 </form>
+
+<form class="del" action="{{ route('evenement.destroy', $evenement->id) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette activité ?')">
+    @csrf
+    @method('DELETE')
+    <button class="btn" type="submit">Supprimer événement</button>
+</form>

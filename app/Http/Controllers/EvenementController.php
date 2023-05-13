@@ -90,6 +90,7 @@ class EvenementController extends Controller
      */
     public function destroy(Evenement $evenement)
     {
-        //
+        $evenement->delete();
+        return redirect()->route('evenement.index');
     }
 }

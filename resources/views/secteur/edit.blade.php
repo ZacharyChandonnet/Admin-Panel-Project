@@ -8,3 +8,9 @@
 
     <div class="voir"><a href="{{ route('secteur.index') }}">Voir Secteurs</a></div>
 </form>
+
+<form class="del" action="{{ route('secteur.destroy', $secteur->id) }}" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette activité ?')">
+    @csrf
+    @method('DELETE')
+    <button class="btn" type="submit">Supprimer secteur</button>
+</form>

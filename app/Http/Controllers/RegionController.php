@@ -76,7 +76,7 @@ class RegionController extends Controller
      */
     public function update(UpdateRegionRequest $request, Region $region)
     {
-        
+
         $data = $request->all();
         $region = $region->fill($data);
         $region->save();
@@ -91,6 +91,7 @@ class RegionController extends Controller
      */
     public function destroy(Region $region)
     {
-        //
+        $region->delete();
+        return redirect()->route('region.index');
     }
 }

@@ -7,6 +7,7 @@ use App\Models\Hebergement;
 use App\Http\Requests\StoreHebergementRequest;
 use App\Http\Requests\UpdateHebergementRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class HebergementController extends Controller
 {
@@ -101,9 +102,9 @@ class HebergementController extends Controller
 
     public function aimer(Hebergement $hebergement)
     {
-        $user = Auth::user();
+        //$user = Auth::user();
         //$user = auth()->user();
-        //$user = User::find(1);  // temporaire
+        $user = User::find(1);  // temporaire
         $etat = $hebergement->fans()->toggle($user);
         $etat = $etat["attached"];
         $etat = count($etat);

@@ -33,7 +33,7 @@ class EntrepriseController extends Controller
      */
     public function create()
     {
-       
+
     }
 
     /**
@@ -104,9 +104,9 @@ class EntrepriseController extends Controller
 
     public function aimer(Entreprise $entreprise)
     {
-        $user = Auth::user();
-        //$user = auth()->user();
-        //$user = User::find(1);  // temporaire
+        // $user = Auth::user();
+        // $user = auth()->user();
+        $user = User::find(1);  // temporaire
         $etat = $entreprise->fans()->toggle($user);
         $etat = $etat["attached"];
         $etat = count($etat);

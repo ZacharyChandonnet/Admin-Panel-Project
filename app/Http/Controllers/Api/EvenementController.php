@@ -7,6 +7,7 @@ use App\Models\Evenement;
 use App\Http\Requests\StoreEvenementRequest;
 use App\Http\Requests\UpdateEvenementRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class EvenementController extends Controller
 {
@@ -31,7 +32,6 @@ class EvenementController extends Controller
      */
     public function create()
     {
-
     }
 
     /**
@@ -46,7 +46,7 @@ class EvenementController extends Controller
         $data = $request->all();
         $evenement->fill($data);
         $evenement->save();
-        return redirect()->route('evenement.edit',$evenement);
+        return redirect()->route('evenement.edit', $evenement);
     }
 
     /**
@@ -101,9 +101,9 @@ class EvenementController extends Controller
 
     public function aimer(Evenement $evenement)
     {
-        $user = Auth::user();
+        // $user = Auth::user();
         //$user = auth()->user();
-        //$user = User::find(1);  // temporaire
+        $user = User::find(1);  // temporaire
         $etat = $evenement->fans()->toggle($user);
         $etat = $etat["attached"];
         $etat = count($etat);

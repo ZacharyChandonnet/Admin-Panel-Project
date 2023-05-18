@@ -37,6 +37,7 @@ Route::group([
     'prefix' => 'entreprise',
     'controller' => EntrepriseController::class,
     'where' => ['entreprise' => '[0-9]+'],
+    "middleware" => ["auth"],
 ], function () {
     Route::get('', 'index')->name('entreprise.index');
     Route::get('create', 'create')->name('entreprise.create');
@@ -53,6 +54,7 @@ Route::group([
     'prefix' => 'region',
     'controller' => RegionController::class,
     'where' => ['region' => '[0-9]+'],
+    "middleware" => ["auth"],
 ], function () {
     Route::get('', 'index')->name('region.index');
     Route::get('create', 'create')->name('region.create');
@@ -69,6 +71,7 @@ Route::group([
     'prefix' => 'hebergement',
     'controller' => HebergementController::class,
     'where' => ['hebergement' => '[0-9]+'],
+    "middleware" => ["auth"],
 ], function () {
     Route::get('', 'index')->name('hebergement.index');
     Route::get('create', 'create')->name('hebergement.create');
@@ -85,6 +88,7 @@ Route::group([
     'prefix' => 'evenement',
     'controller' => EvenementController::class,
     'where' => ['evenement' => '[0-9]+'],
+    "middleware" => ["auth"],
 ], function () {
     Route::get('', 'index')->name('evenement.index');
     Route::get('create', 'create')->name('evenement.create');
@@ -101,6 +105,7 @@ Route::group([
     'prefix' => 'activite',
     'controller' => ActiviteController::class,
     'where' => ['activite' => '[0-9]+'],
+    "middleware" => ["auth"],
 ], function () {
     Route::get('', 'index')->name('activite.index');
     Route::get('create', 'create')->name('activite.create');
@@ -117,6 +122,7 @@ Route::group([
     'prefix' => 'secteur',
     'controller' => SecteurController::class,
     'where' => ['secteur' => '[0-9]+'],
+    "middleware" => ["auth"],
 ], function () {
     Route::get('', 'index')->name('secteur.index');
     Route::get('create', 'create')->name('secteur.create');
@@ -133,6 +139,7 @@ Route::group([
     'prefix' => 'forfait',
     'controller' => ForfaitController::class,
     'where' => ['forfait' => '[0-9]+'],
+    "middleware" => ["auth"],
 ], function () {
     Route::get('', 'index')->name('forfait.index');
     Route::get('create', 'create')->name('forfait.create');
@@ -149,6 +156,7 @@ Route::group([
     'prefix' => 'commentaite',
     'controller' => CommentaiteController::class,
     'where' => ['commentaite' => '[0-9]+'],
+    "middleware" => ["auth"],
 ], function () {
     Route::get('', 'index')->name('commentaite.index');
     Route::get('create', 'create')->name('commentaite.create');
@@ -163,6 +171,7 @@ Route::group([
     'prefix' => 'user',
     'controller' => UserController::class,
     'where' => ['user' => '[0-9]+'],
+    "middleware" => ["auth"],
 ], function () {
     Route::get('', 'index')->name('user.index');
     Route::get('create', 'create')->name('user.create');

@@ -8,6 +8,7 @@ use App\Models\Activite;
 use App\Http\Requests\StoreActiviteRequest;
 use App\Http\Requests\UpdateActiviteRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ActiviteController extends Controller
 {
@@ -102,9 +103,9 @@ class ActiviteController extends Controller
 
     public function aimer(Activite $activite)
     {
-        $user = Auth::user();
+        //$user = Auth::user();
         //$user = auth()->user();
-        //$user = User::find(1);  // temporaire
+        $user = User::find(1);  // temporaire
         $etat = $activite->fans()->toggle($user);
         $etat = $etat["attached"];
         $etat = count($etat);

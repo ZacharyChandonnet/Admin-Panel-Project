@@ -7,6 +7,7 @@ use App\Models\Region;
 use App\Http\Requests\StoreRegionRequest;
 use App\Http\Requests\UpdateRegionRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class RegionController extends Controller
 {
@@ -101,9 +102,9 @@ class RegionController extends Controller
 
     public function aimer(Region $region)
     {
-        $user = Auth::user();
+        //$user = Auth::user();
         //$user = auth()->user();
-        //$user = User::find(1);  // temporaire
+        $user = User::find(1);  // temporaire
         $etat = $region->fans()->toggle($user);
         $etat = $etat["attached"];
         $etat = count($etat);

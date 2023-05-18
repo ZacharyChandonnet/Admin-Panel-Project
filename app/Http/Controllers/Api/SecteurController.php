@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Secteur;
 use App\Http\Requests\StoreSecteurRequest;
 use App\Http\Requests\UpdateSecteurRequest;
+use App\Models\User;
 
 class SecteurController extends Controller
 {

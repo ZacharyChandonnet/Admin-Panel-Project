@@ -7,6 +7,7 @@ use App\Models\Forfait;
 use App\Http\Requests\StoreForfaitRequest;
 use App\Http\Requests\UpdateForfaitRequest;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ForfaitController extends Controller
 {
@@ -101,9 +102,9 @@ class ForfaitController extends Controller
 
     public function aimer(Forfait $forfait)
     {
-        $user = Auth::user();
+        //$user = Auth::user();
         //$user = auth()->user();
-        //$user = User::find(1);  // temporaire
+        $user = User::find(1);  // temporaire
         $etat = $forfait->fans()->toggle($user);
         $etat = $etat["attached"];
         $etat = count($etat);

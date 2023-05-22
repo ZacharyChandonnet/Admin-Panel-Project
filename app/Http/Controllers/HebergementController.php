@@ -91,6 +91,6 @@ class HebergementController extends Controller
     public function destroy(Hebergement $hebergement)
     {
         $hebergement->delete();
-        return redirect()->route('her$hebergement.index');
+        return redirect()->route('hebergement.index');
     }
 }

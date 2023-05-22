@@ -92,6 +92,6 @@ class EntrepriseController extends Controller
     public function destroy(Entreprise $entreprise)
     {
         $entreprise->delete();
-        return redirect()->route('entre$entreprise.index');
+        return redirect()->route('entreprise.index');
     }
 }
